@@ -22,10 +22,8 @@ class SpinnerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         setContentView(binding.root)
         mPlantillaMensajeItemSelected = getString(R.string.plantilla_mensaje_spinner)
 
-        val spinner1 = binding.spinner1
-        spinner1.onItemSelectedListener = this
+        binding.spinner1.onItemSelectedListener = this
 
-        val spinner2 = binding.spinner2
         val futureAndroidVendors: List<String?> = getFutureAndroidVendors()
         val spinner2Adapter: ArrayAdapter<String?> = ArrayAdapter<String?>(
             this,
@@ -33,8 +31,8 @@ class SpinnerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
             futureAndroidVendors
         )
         spinner2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner2.adapter = spinner2Adapter
-        spinner2.onItemSelectedListener = this
+        binding.spinner2.adapter = spinner2Adapter
+        binding.spinner2.onItemSelectedListener = this
     }
 
     private fun showToast(text: String) {

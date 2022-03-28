@@ -14,14 +14,12 @@ import java.util.*
 class ListViewActivity : AppCompatActivity(), OnItemClickListener {
 
     private var mPlantillaMensajeItemSelected: String? = null
-    private var lv: ListView? = null
     private lateinit var binding: ListviewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ListviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        lv = binding.listview
         mPlantillaMensajeItemSelected = getString(R.string.plantilla_mensaje_listview)
 
         val futureAndroidVendors: List<String?> = getFutureAndroidVendors()
@@ -30,8 +28,8 @@ class ListViewActivity : AppCompatActivity(), OnItemClickListener {
             android.R.layout.simple_list_item_single_choice,
             futureAndroidVendors
         )
-        lv!!.setAdapter(listAdapter)
-        lv!!.setOnItemClickListener(this)
+        binding.listview!!.setAdapter(listAdapter)
+        binding.listview!!.setOnItemClickListener(this)
     }
 
     private fun getFutureAndroidVendors(): List<String?> {

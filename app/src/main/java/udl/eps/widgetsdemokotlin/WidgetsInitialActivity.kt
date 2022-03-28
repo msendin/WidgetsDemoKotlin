@@ -27,7 +27,7 @@ class WidgetsInitialActivity : AppCompatActivity() {
     }
 
     fun muestraListView(clickedButton: View?) {
-        `in` = Intent(this, ListViewActivityBis::class.java)
+        `in` = Intent(this, ListViewActivity::class.java)
         startActivity(`in`)
     }
 

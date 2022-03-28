@@ -21,12 +21,11 @@ class GridViewActivity : AppCompatActivity(), OnItemClickListener {
         setContentView(binding.root)
         mPlantillaMensajeItemSelected = getString(R.string.plantilla_mensaje_gridview)
 
-        val gridv = binding.gridview
         val futureAndroidVendors: List<String?> = getFutureAndroidVendors()
         val gridAdapter: ArrayAdapter<String?> =
             ArrayAdapter<String?>(this, android.R.layout.simple_list_item_1, futureAndroidVendors)
-        gridv.adapter = gridAdapter
-        gridv.onItemClickListener = this
+        binding.gridview.adapter = gridAdapter
+        binding.gridview.onItemClickListener = this
     }
 
     private fun showToast(text: String) {
