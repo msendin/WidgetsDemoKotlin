@@ -7,22 +7,25 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import udl.eps.widgetsdemokotlin.databinding.SpinnersBinding
 import java.util.*
 
 class SpinnerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private var mPlantillaMensajeItemSelected: String? = null
     private var isFirst = true
+    private lateinit var binding:SpinnersBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.spinners)
+        binding = SpinnersBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         mPlantillaMensajeItemSelected = getString(R.string.plantilla_mensaje_spinner)
 
-        val spinner1 = findViewById<Spinner>(R.id.spinner1)
+        val spinner1 = binding.spinner1
         spinner1.onItemSelectedListener = this
 
-        val spinner2 = findViewById<Spinner>(R.id.spinner2)
+        val spinner2 = binding.spinner2
         val futureAndroidVendors: List<String?> = getFutureAndroidVendors()
         val spinner2Adapter: ArrayAdapter<String?> = ArrayAdapter<String?>(
             this,
@@ -63,7 +66,7 @@ class SpinnerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                 isFirst = false
             } else {
                 val selection = spinner.getItemAtPosition(selectedIndex).toString()
-                val message: String = kotlin.String.format(mPlantillaMensajeItemSelected!!, selection)
+                val message: String = String.format(mPlantillaMensajeItemSelected!!, selection)
                 showToast(message)
             }
         }

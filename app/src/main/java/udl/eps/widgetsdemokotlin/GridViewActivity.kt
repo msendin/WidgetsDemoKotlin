@@ -8,17 +8,20 @@ import android.widget.ArrayAdapter
 import android.widget.GridView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import udl.eps.widgetsdemokotlin.databinding.GridviewBinding
 import java.util.*
 
 class GridViewActivity : AppCompatActivity(), OnItemClickListener {
     private var mPlantillaMensajeItemSelected: String? = null
+    private lateinit var binding: GridviewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.gridview)
+        binding = GridviewBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         mPlantillaMensajeItemSelected = getString(R.string.plantilla_mensaje_gridview)
 
-        val gridv = findViewById<GridView>(R.id.gridview)
+        val gridv = binding.gridview
         val futureAndroidVendors: List<String?> = getFutureAndroidVendors()
         val gridAdapter: ArrayAdapter<String?> =
             ArrayAdapter<String?>(this, android.R.layout.simple_list_item_1, futureAndroidVendors)
@@ -57,7 +60,7 @@ class GridViewActivity : AppCompatActivity(), OnItemClickListener {
             selectedIndex: Int, id: Long
         ) {
             val selection = gridv.getItemAtPosition(selectedIndex).toString()
-            val message: String = kotlin.String.format(mPlantillaMensajeItemSelected!!, selection)
+            val message: String = String.format(mPlantillaMensajeItemSelected!!, selection)
             showToast(message)
         }
 }

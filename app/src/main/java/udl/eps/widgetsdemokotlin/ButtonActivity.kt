@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import udl.eps.widgetsdemokotlin.databinding.ButtonsBinding
+
 
 class ButtonActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
 
@@ -16,18 +18,24 @@ class ButtonActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
     private var mPlantillaMensajeNuevaSeleccion: String? = null
     private var mPlantillaMensajeSeleccionCambiada: String? = null
 
+    private lateinit var binding: ButtonsBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.buttons)
+        binding = ButtonsBinding.inflate(layoutInflater)
+        val view = binding.getRoot()
+        setContentView(view)
+
         mPlantillaMensajeBoton = getString(R.string.plantilla_mensaje_boton)
         mPlantillaMensajeCheck = getString(R.string.plantilla_mensaje_check)
         mPlantillaMensajeImageBoton = getString(R.string.plantilla_mensaje_imagebutton)
         mPlantillaMensajeToggleBoton = getString(R.string.plantilla_mensaje_togglebutton)
-        val radioGroup = findViewById<RadioGroup>(R.id.radio_group)
         mPlantillaMensajeNuevaSeleccion = getString(R.string.plantilla_mensaje_nuevaseleccion)
         mPlantillaMensajeSeleccionCambiada =
             getString(R.string.plantilla_mensaje_seleccioncambiada)
-        radioGroup.setOnCheckedChangeListener(this)
+
+        binding.radioGroup.setOnCheckedChangeListener(this)
     }
 
     /** Makes a Toast showing the label of the Button, RadioButton, or CheckBox.

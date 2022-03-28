@@ -8,18 +8,21 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import udl.eps.widgetsdemokotlin.databinding.ListviewBinding
 import java.util.*
 
 class ListViewActivity : AppCompatActivity(), OnItemClickListener {
 
     private var mPlantillaMensajeItemSelected: String? = null
     private var lv: ListView? = null
+    private lateinit var binding: ListviewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.listview)
+        binding = ListviewBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         mPlantillaMensajeItemSelected = getString(R.string.plantilla_mensaje_listview)
-        lv = findViewById(R.id.listview)
+        lv = binding.listview
 
         val futureAndroidVendors: List<String?> = getFutureAndroidVendors()
         val listAdapter: ArrayAdapter<String?> = ArrayAdapter<String?>(
