@@ -28,8 +28,8 @@ class ListViewActivity : AppCompatActivity(), OnItemClickListener {
             android.R.layout.simple_list_item_single_choice,
             futureAndroidVendors
         )
-        binding.listview!!.setAdapter(listAdapter)
-        binding.listview!!.setOnItemClickListener(this)
+        binding.listview.setAdapter(listAdapter)
+        binding.listview.setOnItemClickListener(this)
     }
 
     private fun getFutureAndroidVendors(): List<String?> {
