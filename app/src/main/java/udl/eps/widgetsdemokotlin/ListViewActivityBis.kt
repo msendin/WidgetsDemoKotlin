@@ -1,54 +1,52 @@
 package udl.eps.widgetsdemokotlin
 
+import android.app.ListActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import udl.eps.widgetsdemokotlin.databinding.ListviewBinding
 import java.util.*
 
-class ListViewActivity : AppCompatActivity(), OnItemClickListener {
+class ListViewActivityBis : ListActivity() {
 
     private var mPlantillaMensajeItemSelected: String? = null
-    private var lv: ListView? = null
-    private lateinit var binding: ListviewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ListviewBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        lv = binding.listview
+
         mPlantillaMensajeItemSelected = getString(R.string.plantilla_mensaje_listview)
 
         val futureAndroidVendors: List<String?> = getFutureAndroidVendors()
-        val listAdapter: ArrayAdapter<String?> = ArrayAdapter<String?>(
+        val listAdapter: ArrayAdapter<String> = ArrayAdapter<String>(
             this,
             android.R.layout.simple_list_item_single_choice,
             futureAndroidVendors
         )
-        lv!!.setAdapter(listAdapter)
-        lv!!.setOnItemClickListener(this)
+
+        setListAdapter(listAdapter)
+        registerForContextMenu(listView)
     }
+
 
     private fun getFutureAndroidVendors(): List<String?> {
         val vendorArray = arrayOf("RIM", "Palm", "Nokia")
         val vendorList = Arrays.asList(*vendorArray)
-        Collections.shuffle(vendorList)
+        vendorList.shuffle()
         return vendorList
     }
+
 
     private fun showToast(text: String) {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show()
     }
 
-    override fun onItemClick(
-        listv: AdapterView<*>, selectedView: View?,
+
+    override fun onListItemClick(
+        listv: ListView, selectedView: View?,
         position: Int, id: Long
     ) {
+        //val selection = getListAdapter().getItem(position).toString()
         val selection = listv.getItemAtPosition(position).toString()
         val message = String.format(mPlantillaMensajeItemSelected!!, selection)
         showToast(message)
