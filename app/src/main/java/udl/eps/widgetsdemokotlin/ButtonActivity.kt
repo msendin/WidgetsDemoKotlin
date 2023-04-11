@@ -1,5 +1,6 @@
 package udl.eps.widgetsdemokotlin
 
+
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -34,9 +35,8 @@ class ButtonActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
         mPlantillaMensajeNuevaSeleccion = getString(R.string.plantilla_mensaje_nuevaseleccion)
         mPlantillaMensajeSeleccionCambiada =
             getString(R.string.plantilla_mensaje_seleccioncambiada)
-
         binding.radioGroup.setOnCheckedChangeListener(this)
-    }
+     }
 
     /** Makes a Toast showing the label of the Button, RadioButton, or CheckBox.
      * ImageButtons do not have text, and are not subclasses of Button, so you
@@ -104,7 +104,7 @@ class ButtonActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
     }
 
     override fun onCheckedChanged(group: RadioGroup, checkedId: Int) {
-            val newChecked: RadioButton = findViewById<RadioButton>(checkedId)
+            val newChecked: RadioButton = findViewById(checkedId)
             val message: String
             message = if (mLastChecked == null) {
                 String.format(
