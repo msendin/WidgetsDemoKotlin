@@ -25,7 +25,7 @@ class ButtonActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ButtonsBinding.inflate(layoutInflater)
-        val view = binding.getRoot()
+        val view = binding.root
         setContentView(view)
 
         mPlantillaMensajeBoton = getString(R.string.plantilla_mensaje_boton)

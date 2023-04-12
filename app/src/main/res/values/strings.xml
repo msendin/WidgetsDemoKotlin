@@ -45,7 +45,7 @@
     <string name="gps_toggle_on">GPS On</string>
     <string name="gps_toggle_off">GPS Off</string>
     <string name="plantilla_mensaje_togglebutton_simple"> Has clicado el ToggleButton %s. </string>
-    <string name="plantilla_mensaje_togglebutton" formatted="false"> Has clicado el ToggleButton %s. La etiqueta es ahora %s </string>
+    <string name="plantilla_mensaje_togglebutton" formatted="false"> Has clicado uno de los ToggleButton. Estado: %s. La etiqueta es ahora %s </string>
 
     <!-- Spinners example -->
     <string name="spinner_app_name">Spinners (Combo Boxes)</string>
